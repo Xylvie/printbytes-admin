@@ -28,7 +28,7 @@ class SalesController extends Controller
         $currentYear = now()->year;
         $currentMonth = now()->month;
 
-        $raw = Sales::selectRaw("strftime('%m', created_at) as month, SUM(amount) as total")
+        $raw = Sales::selectRaw("MONTH(created_at) as month, SUM(amount) as total")
             ->whereYear('created_at', $currentYear)
             ->groupBy('month')
             ->orderBy('month')
