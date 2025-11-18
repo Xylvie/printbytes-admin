@@ -16,6 +16,7 @@ Route::middleware( 'auth')->prefix('dashboard')->group(function () {
     Route::get('/partition', [ExpensesController::class, 'index'])->name('partitions');
 
     Route::post('/sales/update', [SalesController::class, 'store'])->name('sales-updated');
+    Route::post('/sales/{id}/delete', [SalesController::class, 'destroy'])->name('sales-delete');
     Route::post('/expenses/update', [ExpensesController::class, 'store'])->name('expenses-updated');
 });
 

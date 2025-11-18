@@ -16,6 +16,7 @@
                         <tr>
                             <th class="px-4 py-2 text-black border-b">Date</th>
                             <th class="px-4 py-2 text-black border-b">Amount</th>
+                            <th class="px-4 py-2 text-black border-b">Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -23,6 +24,16 @@
                             <tr class="hover:bg-gray-50 hover:text-black">
                                 <td class="px-4 py-2 border-b">{{ $sale->created_at->format('d-m-Y') }}</td>
                                 <td class="px-4 py-2 border-b">Php {{ number_format($sale->amount, 2) }}</td>
+                                <td class="px-4 py-2 border-b">
+                                    <form method="POST" action="{{ route('sales-delete', $sale->id) }}">
+                                        @csrf
+                                        <button type="submit">
+                                            <span class="text-red-500 material-symbols-outlined">
+                                                delete
+                                            </span>
+                                        </button>
+                                    </form>
+                                </td>
                             </tr>
                         @empty
                             <tr>
